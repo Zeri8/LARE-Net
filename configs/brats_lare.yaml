@@ -1,0 +1,66 @@
+project:
+  name: LARE-Net
+  task: incomplete_multimodal_brain_tumor_segmentation
+  seed: 42
+
+data:
+  dataset: BraTS
+  root: /path/to/BraTS
+  modalities: [T1, T1ce, T2, FLAIR]
+  label_mode: brats_1_2_4
+  output_regions: [WT, TC, ET]
+  patch_size: [128, 128, 128]
+  num_workers: 4
+
+missing_modality:
+  mode: random
+  min_modalities: 1
+  max_modalities: 4
+  evaluate_all_15_combinations: true
+
+model:
+  name: hemis_segresnet
+  in_channels_per_modality: 1
+  num_modalities: 4
+  num_classes: 3
+  base_channels: 32
+  encoder_channels: [32, 64, 128, 256]
+  decoder_channels: [128, 64, 32]
+  norm: instance
+  activation: leaky_relu
+
+loss:
+  segmentation:
+    dice_weight: 1.0
+    bce_weight: 1.0
+  reliability:
+    enabled: false
+    weight: 0.0
+  boundary:
+    enabled: false
+    weight: 0.0
+  uncertainty:
+    enabled: false
+    weight: 0.0
+
+training:
+  epochs: 300
+  batch_size: 1
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  optimizer: adamw
+  amp: true
+  grad_clip: 12.0
+  val_interval: 5
+
+inference:
+  sliding_window: true
+  roi_size: [128, 128, 128]
+  sw_batch_size: 1
+  overlap: 0.5
+  threshold: 0.5
+
+logging:
+  output_dir: outputs/brats_lare
+  save_dir: checkpoints/brats_lare
+  use_wandb: false
