@@ -1,0 +1,28 @@
+# Core deep learning
+# Install a PyTorch build that matches your CUDA version from https://pytorch.org/get-started/locally/
+torch>=2.1.0
+torchvision>=0.16.0
+
+# Medical imaging
+monai>=1.3.0
+nibabel>=5.2.0
+SimpleITK>=2.3.0
+
+# Scientific Python
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-image>=0.21.0
+scikit-learn>=1.3.0
+pandas>=2.0.0
+
+# Configs and utilities
+PyYAML>=6.0
+tqdm>=4.66.0
+einops>=0.7.0
+
+# Metrics and visualization
+matplotlib>=3.7.0
+seaborn>=0.13.0
+
+# Optional experiment tracking
+wandb>=0.16.0
