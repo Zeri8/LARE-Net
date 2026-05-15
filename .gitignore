@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+runs/
+wandb/
+mlruns/
+*.log
+
+# Data and outputs
+data/raw/
+data/processed/
+datasets/
+checkpoints/
+outputs/
+predictions/
+artifacts/
+
+# Large medical image files
+*.nii
+*.nii.gz
+*.mha
+*.mhd
+*.nrrd
+*.npz
+*.h5
+*.hdf5
+
+# PyTorch
+*.pt
+*.pth
+*.ckpt
+
+# Temporary files
+*.tmp
+*.bak
